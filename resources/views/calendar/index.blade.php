@@ -122,19 +122,32 @@
 	                html += '<td id="nextmonthdates">' + (p++) + '</td>';
 	              // Current month dates
 	              } else {
-	               // html += '<td id="currentmonthdates">' + (d) + '</td>';
-	               <?php
-	               		foreach($data as $d){
-	               			$m = $d->type;
-	               			$n = $d->day_name;
-
-	               		}
-	               		 	
-	               ?>
-	               html += '<td id="currentmonthdates">' + 
-	                      '<span id="cellvaluespan">' + (d) + '</span><br/>' + 
-	                      '<input type="checkbox" id="cellvaluelist" value="0"/>'+'<br>'+'Available'+
-	                    '</td>';
+	              // html += '<td id="currentmonthdates">' + (d) + '</td>';
+	              	 var c = [d];
+	              	 k = c.toString();
+	              	 //console.log( k );
+	             	<?php
+							foreach($data as $value){
+								$m = $value->type; ?>
+								var a = '<?php echo $m ;?>';
+							<?php	$n = $value->day_name; ?>
+							var b = '<?php echo $n ;?>';
+							if(a==1 && b==k){
+		                      	var p="Available";
+		                      }else if(a==0 && b==k){
+		                      	var p="Booked";
+		                      }
+                      		console.log(b);
+						<?php	}
+                      ?>
+                      
+                      
+                    
+       				html += '<td id="currentmonthdates">' + 
+                      '<span >' + (d) + '</span><br/>' + 
+                      ''+'<br>'+(p)+
+                    '</td>';
+	               
 	                p = 1;
 	              }
 	              
